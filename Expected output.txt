@@ -1,0 +1,16 @@
+Create:
+
+PRACTICAL-1/output.txt
+
+Initially, I recommend putting this:
+
+Student Name:
+Register Number:
+
+Output:
+
+Area of trapezoid=12.0
+Area of rectangle=12.0
+Area of square=9.0
+
+Students should replace the blank details with their own information.
