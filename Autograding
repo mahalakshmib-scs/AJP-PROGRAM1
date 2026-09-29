@@ -1,0 +1,140 @@
+#!/bin/bash
+
+echo "======================================"
+echo " PRACTICAL-1 JAVA AUTOGRADING"
+echo "======================================"
+
+cd PRACTICAL-1
+
+echo ""
+echo "Test 1: Checking Java file..."
+
+if [ ! -f Practical1.java ]; then
+    echo "FAIL: Practical1.java not found"
+    exit 1
+fi
+
+echo "PASS: Practical1.java found"
+
+
+echo ""
+echo "Test 2: Compiling program..."
+
+javac Practical1.java
+
+if [ $? -ne 0 ]; then
+    echo "FAIL: Compilation error"
+    exit 1
+fi
+
+echo "PASS: Compilation successful"
+
+
+echo ""
+echo "Test 3: Checking Point class..."
+
+if grep -q "class Point" Practical1.java &&
+   grep -q "private double x" Practical1.java &&
+   grep -q "private double y" Practical1.java &&
+   grep -q "getX" Practical1.java &&
+   grep -q "getY" Practical1.java
+then
+    echo "PASS: Point class implemented"
+else
+    echo "FAIL: Point class requirements not satisfied"
+    exit 1
+fi
+
+
+echo ""
+echo "Test 4: Checking Quadrilateral class..."
+
+if grep -q "class Quadrilateral" Practical1.java &&
+   grep -q "Point point1" Practical1.java &&
+   grep -q "Point point2" Practical1.java &&
+   grep -q "Point point3" Practical1.java &&
+   grep -q "Point point4" Practical1.java
+then
+    echo "PASS: Quadrilateral class found"
+else
+    echo "FAIL: Quadrilateral requirements not satisfied"
+    exit 1
+fi
+
+
+echo ""
+echo "Test 5: Checking inheritance hierarchy..."
+
+if grep -q "class Trapezoid extends Quadrilateral" Practical1.java &&
+   grep -q "class Rectangle extends Quadrilateral" Practical1.java &&
+   grep -q "class Square extends Rectangle" Practical1.java
+then
+    echo "PASS: Required inheritance found"
+else
+    echo "FAIL: Inheritance hierarchy is incorrect"
+    exit 1
+fi
+
+
+echo ""
+echo "Test 6: Running program..."
+
+output=$(java Practical1)
+
+echo "$output"
+
+
+echo ""
+echo "Test 7: Checking Trapezoid area..."
+
+if echo "$output" | grep -q "Area of trapezoid=12.0"
+then
+    echo "PASS: Trapezoid area is correct"
+else
+    echo "FAIL: Trapezoid area is incorrect"
+    exit 1
+fi
+
+
+echo ""
+echo "Test 8: Checking Rectangle area..."
+
+if echo "$output" | grep -q "Area of rectangle=12.0"
+then
+    echo "PASS: Rectangle area is correct"
+else
+    echo "FAIL: Rectangle area is incorrect"
+    exit 1
+fi
+
+
+echo ""
+echo "Test 9: Checking Square area..."
+
+if echo "$output" | grep -q "Area of square=9.0"
+then
+    echo "PASS: Square area is correct"
+else
+    echo "FAIL: Square area is incorrect"
+    exit 1
+fi
+
+
+echo ""
+echo "Test 10: Checking output.txt..."
+
+if [ -f output.txt ]
+then
+    echo "PASS: output.txt found"
+else
+    echo "FAIL: output.txt not found"
+    exit 1
+fi
+
+
+echo ""
+echo "======================================"
+echo " ALL TESTS PASSED"
+echo "======================================"
+
+exit 0
