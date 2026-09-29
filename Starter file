@@ -1,0 +1,135 @@
+Give them a starter program with the required class structure and TODO sections.
+
+// PRACTICAL-1
+// Inheritance Hierarchy: Quadrilateral -> Trapezoid -> Rectangle -> Square
+
+class Point {
+
+    private double x;
+    private double y;
+
+    public Point(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+}
+
+
+// Quadrilateral is the superclass
+class Quadrilateral {
+
+    Point point1;
+    Point point2;
+    Point point3;
+    Point point4;
+
+    public Quadrilateral(Point p1, Point p2, Point p3, Point p4) {
+
+        // TODO: Initialize the four points
+
+    }
+
+    // No area calculation for Quadrilateral
+}
+
+
+// Trapezoid inherits from Quadrilateral
+class Trapezoid extends Quadrilateral {
+
+    public Trapezoid(Point p1, Point p2, Point p3, Point p4) {
+
+        // TODO: Call superclass constructor
+
+    }
+
+    public double calculateArea() {
+
+        // TODO:
+        // Calculate base1, base2 and height
+        // Return the area of trapezoid
+
+        return 0.0;
+    }
+}
+
+
+// Rectangle inherits from Quadrilateral
+class Rectangle extends Quadrilateral {
+
+    public Rectangle(Point p1, Point p2, Point p3, Point p4) {
+
+        // TODO: Call superclass constructor
+
+    }
+
+    public double calculateArea() {
+
+        // TODO:
+        // Calculate length and width
+        // Return rectangle area
+
+        return 0.0;
+    }
+}
+
+
+// Square inherits from Rectangle
+class Square extends Rectangle {
+
+    public Square(Point p1, double sideLength) {
+
+        // TODO:
+        // Create four points using the starting point
+        // and side length
+        //
+        // Call Rectangle constructor
+
+        super(p1,
+              new Point(0, 0),
+              new Point(0, 0),
+              new Point(0, 0));
+    }
+
+    // Square can inherit calculateArea()
+}
+
+
+public class Practical1 {
+
+    public static void main(String[] args) {
+
+        Point p1 = new Point(0, 0);
+        Point p2 = new Point(4, 0);
+        Point p3 = new Point(4, 3);
+        Point p4 = new Point(0, 3);
+
+        Trapezoid trapezoid =
+            new Trapezoid(p1, p2, p3, p4);
+
+        Rectangle rectangle =
+            new Rectangle(p1, p2, p3, p4);
+
+        Square square =
+            new Square(p1, 3);
+
+        System.out.println(
+            "Area of trapezoid=" +
+            trapezoid.calculateArea());
+
+        System.out.println(
+            "Area of rectangle=" +
+            rectangle.calculateArea());
+
+        System.out.println(
+            "Area of square=" +
+            square.calculateArea());
+    }
+}
