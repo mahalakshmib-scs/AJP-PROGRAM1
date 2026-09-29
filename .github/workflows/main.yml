@@ -1,0 +1,37 @@
+Create:
+
+.github/workflows/autograding.yml
+
+Use:
+
+name: Java Practical Autograding
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+
+  practical-1:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Student Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Give Test Permission
+        run: chmod +x tests/verify_practical1.sh
+
+      - name: Run Practical 1 Tests
+        run: ./tests/verify_practical1.sh
