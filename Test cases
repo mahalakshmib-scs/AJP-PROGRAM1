@@ -1,0 +1,61 @@
+Create:
+
+tests/verify_practical1.sh
+
+The tests should compile and execute the Java program, rather than trusting output.txt.
+
+Test Case 1 — Trapezoid
+
+Points:
+
+(0,0)
+(4,0)
+(4,3)
+(0,3)
+
+Expected:
+
+Area of trapezoid=12.0
+
+Calculation:
+
+base1 = 4
+base2 = 4
+height = 3
+
+Area = (4 + 4) × 3 / 2
+     = 12
+Test Case 2 — Rectangle
+length = 4
+width = 3
+
+Expected:
+
+Area of rectangle=12.0
+Test Case 3 — Square
+side = 3
+
+Expected:
+
+Area of square=9.0
+Test Case 4 — Inheritance
+
+Check that:
+
+Trapezoid extends Quadrilateral
+Rectangle extends Quadrilateral
+Square extends Rectangle
+
+This is important because a student could produce the correct output without implementing the required inheritance hierarchy.
+
+Test Case 5 — Point class
+
+Check that Point contains:
+
+private double x;
+private double y;
+
+and:
+
+getX()
+getY()
